@@ -26,8 +26,7 @@ const fetchPostById = async (req, res) => {
 // create a post
 const createPost = async (req, res) => {
     const post = req.body;
-    const imagename = req.file.filename;
-    post.image = imagename;
+    console.log(post)
     try {
         await Posts.create(post);
         res.status(200).json({
@@ -43,14 +42,8 @@ const createPost = async (req, res) => {
 // update a post
 const updatePost = async (req, res) => {
     const id = req.params.id;
-    let newImage = "";
-    // if you want to update image
-    if (req.file) {
-        newImage = req.file.filename;
-    }
     // create a new post
     const newPost = req.body;
-    newPost.image = newImage;
     // use try and catch to update in db
     try {
         await Posts.findByIdAndUpdate(id, newPost);

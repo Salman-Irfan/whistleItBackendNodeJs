@@ -15,10 +15,6 @@ const postSchema = new Schema(
             type: String,
             required: true,
         },
-        image: {
-            type: String,
-            required: false,
-        },
         created: {
             type: Date,
             default: Date.now,
